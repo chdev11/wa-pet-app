@@ -5,7 +5,9 @@ import 'package:wa_pet_app/app/modules/home/domain/usecases/fetch_dogs.dart';
 import 'package:wa_pet_app/app/modules/home/external/pet_datasource_impl.dart';
 import 'package:wa_pet_app/app/modules/home/infra/datasources/pet_datasource.dart';
 import 'package:wa_pet_app/app/modules/home/infra/repositories/pet_repository_impl.dart';
+import 'package:wa_pet_app/env.dart';
 import 'package:wa_pet_app/shared/clients/implementations/dio_client.dart';
+import 'package:wa_pet_app/shared/clients/interceptors/auth_interceptor.dart';
 import 'presenter/stores/home_store.dart';
 
 import 'ui/home_page.dart';
@@ -13,6 +15,8 @@ import 'ui/home_page.dart';
 class HomeModule extends Module {
   @override
   final List<Bind> binds = [
+    Bind.lazySingleton((i) =>
+        DioClient(interceptors: [AuthInterceptor(apiSecret, apiLanguage)])),
     Bind.lazySingleton((i) => PetDatasourceImpl(i<DioClient>())),
     Bind.lazySingleton((i) => PetRepositoryImpl(i<IPetDatasource>())),
     Bind.lazySingleton((i) => FetchCats(i<IPetRepository>())),

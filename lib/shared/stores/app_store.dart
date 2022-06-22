@@ -13,10 +13,7 @@ abstract class _AppStoreBase with Store {
   _AppStoreBase(
     this._automaticLoginUsecase,
   ) {
-    () async {
-      var user = await _automaticLoginUsecase.call();
-      if (user != null) setLoggedUser(user);
-    }();
+    checkLocalStorage();
   }
 
   @observable

@@ -10,6 +10,7 @@ class CustomTextFieldWidget extends StatelessWidget {
     this.labelText,
     this.hintText,
     this.onChanged,
+    this.onSubmited,
     this.prefixIcon,
     this.prefixWidget,
     this.suffixIcon,
@@ -34,6 +35,7 @@ class CustomTextFieldWidget extends StatelessWidget {
   final String? labelText;
   final String? hintText;
   final void Function(String)? onChanged;
+  final void Function(String)? onSubmited;
   final IconData? prefixIcon;
   final Widget? prefixWidget;
   final IconData? suffixIcon;
@@ -60,6 +62,7 @@ class CustomTextFieldWidget extends StatelessWidget {
       child: Container(
         decoration: decoration,
         child: TextField(
+          onSubmitted: onSubmited,
           readOnly: readOnly,
           controller: controller,
           onChanged: onChanged,

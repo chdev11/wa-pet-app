@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:wa_pet_app/app/modules/login/presenter/states/login_state.dart';
@@ -84,32 +83,15 @@ class _LoginPageState extends State<LoginPage> {
                     controller: usernameController,
                     hintText: "E-mail",
                     onChanged: store.onChangeEmail,
+                    onSubmited: (_) => _login(),
                   ),
                   const SizedBox(height: 5),
                   CustomButtonWidget(
                     height: 35,
-                    onPressed: () async {
-                      await store.login();
-                      usernameController.text = "";
-                      passwordController.text = "";
-                      store.onChangeEmail('');
-                    },
+                    onPressed: () => _login(),
                     text: "Login",
                     color: MaterialStateProperty.resolveWith(
                         (states) => lightBlue),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.only(left: bigPadding),
-                    child: Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Text(
-                        "Esqueceu sua senha?",
-                        style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                              color: lightBlue,
-                              fontWeight: FontWeight.w600,
-                            ),
-                      ),
-                    ),
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                   CircleAvatar(
@@ -124,5 +106,12 @@ class _LoginPageState extends State<LoginPage> {
             )),
       ),
     );
+  }
+
+  Future<void> _login() async {
+    await store.login();
+    usernameController.text = "";
+    passwordController.text = "";
+    store.onChangeEmail('');
   }
 }

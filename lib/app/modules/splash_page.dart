@@ -46,12 +46,11 @@ class _SplashPageState extends State<SplashPage>
       end: const Offset(0, 2),
     ).animate(CurvedAnimation(
       parent: _controller,
-      curve: Curves.easeIn,
+      curve: Curves.easeInOutCubic,
     ));
 
     _controller.forward();
 
-    app.checkLocalStorage();
     super.initState();
   }
 
@@ -69,7 +68,7 @@ class _SplashPageState extends State<SplashPage>
               children: [
                 Image.asset(
                   mainLogo,
-                  height: 75,
+                  height: 100,
                 ),
               ],
             ),

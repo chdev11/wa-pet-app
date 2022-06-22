@@ -15,8 +15,7 @@ class LoginUsecase implements ILoginUsecase {
   @override
   Future<Either<IAuthException, LoggedUser?>> call(String? email) async {
     if (email == null || email.isEmpty) {
-      return Left(
-          InvalidCredentialsException("O email não pode ser nulo ou vazio."));
+      return Left(InvalidCredentialsException("Email cannot be null or empty"));
     }
 
     return await repository.login(email);

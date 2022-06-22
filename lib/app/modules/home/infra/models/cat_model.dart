@@ -7,12 +7,12 @@ class CatModel extends Cat {
   CatModel(
       {required String id,
       String? name,
-      required String breedName,
+      String? breedName,
       String? image,
-      required String temperament,
-      required String origin,
-      required String lifeSpan,
-      required PetWeight weight})
+      String? temperament,
+      String? origin,
+      String? lifeSpan,
+      PetWeight? weight})
       : super(
             id: id,
             name: name,
@@ -30,7 +30,9 @@ class CatModel extends Cat {
       'temperament': temperament,
       'origin': origin,
       'life_span': lifeSpan,
-      'weight': {'imperial': weight.imperial, 'metric': weight.metric},
+      'weight': weight != null
+          ? {'imperial': weight!.imperial, 'metric': weight!.metric ?? ''}
+          : '',
       'image': {'url': image}
     };
   }

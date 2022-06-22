@@ -7,12 +7,12 @@ class Cat extends IPet {
   Cat(
       {required this.id,
       String? name,
-      required String breedName,
+      String? breedName,
       String? image,
-      required String temperament,
-      required String origin,
-      required String lifeSpan,
-      required PetWeight weight})
+      String? temperament,
+      String? origin,
+      String? lifeSpan,
+      PetWeight? weight})
       : super(
             name: name,
             breedName: breedName,

@@ -32,8 +32,12 @@ class DogModel extends Dog {
       'temperament': temperament,
       'origin': origin,
       'life_span': lifeSpan,
-      'weight': {'imperial': weight.imperial, 'metric': weight.metric},
-      'height': {'imperial': height.imperial, 'metric': height.metric},
+      'weight': weight != null
+          ? {'imperial': weight!.imperial, 'metric': weight!.metric ?? ''}
+          : '',
+      'height': height != null
+          ? {'imperial': height!.imperial, 'metric': height!.metric ?? ''}
+          : '',
       'image': {'url': image}
     };
   }

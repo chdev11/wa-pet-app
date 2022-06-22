@@ -8,6 +8,14 @@ class PetDatasourceException extends IPetException {
   PetDatasourceException(String message) : super(message);
 }
 
+class PetLimitException extends IPetException {
+  PetLimitException(String message) : super(message);
+}
+
+class PetPageException extends IPetException {
+  PetPageException(String message) : super(message);
+}
+
 class PetNormalizeException extends IPetException {
   PetNormalizeException(String message) : super(message);
 }

@@ -15,30 +15,36 @@ void main() {
   late IPetRepository repository;
   late IFetchPets usecase;
 
+  late int limit;
+  late int page;
+
   setUp(() {
     repository = PetRepositoryMock();
     usecase = FetchDogs(repository);
+
+    limit = 30;
+    page = 0;
   });
 
-  test('should return a list of pet', () async {
-    when(() => repository.fetchDogs(limit: 30, page: 0))
+  test('should return a list of dog', () async {
+    when(() => repository.fetchDogs(limit, page))
         .thenAnswer((_) async => const Right(<Dog>[]));
 
-    final future = usecase();
+    final future = usecase(limit: limit, page: page);
 
     expect(future, completes);
 
     final result = await future;
 
     expect(result.isRight(), true);
-    expect(result.fold(id, id), isA<List<IPet>>());
+    expect(result.fold(id, id), isA<List<Dog>>());
   });
 
   test('should return a pet datasource exception', () async {
-    when(() => repository.fetchDogs(limit: 30, page: 0))
+    when(() => repository.fetchDogs(limit, page))
         .thenAnswer((_) async => Left(PetDatasourceException('')));
 
-    final future = usecase();
+    final future = usecase(limit: limit, page: page);
 
     expect(future, completes);
 

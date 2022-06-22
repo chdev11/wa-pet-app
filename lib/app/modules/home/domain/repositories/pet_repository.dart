@@ -5,8 +5,6 @@ import 'package:wa_pet_app/app/modules/home/domain/entities/pet.dart';
 import 'package:wa_pet_app/app/modules/home/domain/errors/pet_errors.dart';
 
 abstract class IPetRepository {
-  Future<Either<IPetException, List<Cat>>> fetchCats(
-      {required int limit, required int page});
-  Future<Either<IPetException, List<Dog>>> fetchDogs(
-      {required int limit, required int page});
+  Future<Either<IPetException, List<Cat>>> fetchCats(int? limit, int? page);
+  Future<Either<IPetException, List<Dog>>> fetchDogs(int? limit, int? page);
 }

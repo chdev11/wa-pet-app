@@ -12,9 +12,9 @@ class PetRepositoryImpl implements IPetRepository {
 
   @override
   Future<Either<IPetException, List<Cat>>> fetchCats(
-      {required int limit, required int page}) async {
+      int? limit, int? page) async {
     try {
-      final result = await datasource.fetchCats(limit: limit, page: page);
+      final result = await datasource.fetchCats(limit, page);
       return Right(result);
     } on IPetException catch (e) {
       return Left(e);
@@ -25,9 +25,9 @@ class PetRepositoryImpl implements IPetRepository {
 
   @override
   Future<Either<IPetException, List<Dog>>> fetchDogs(
-      {required int limit, required int page}) async {
+      int? limit, int? page) async {
     try {
-      final result = await datasource.fetchDogs(limit: limit, page: page);
+      final result = await datasource.fetchDogs(limit, page);
       return Right(result);
     } on IPetException catch (e) {
       return Left(e);

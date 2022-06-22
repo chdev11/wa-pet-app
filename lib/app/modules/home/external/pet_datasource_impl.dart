@@ -13,7 +13,7 @@ class PetDatasourceImpl implements IPetDatasource {
   PetDatasourceImpl(this.client);
 
   @override
-  Future<List<Cat>> fetchCats({required int limit, required int page}) async {
+  Future<List<Cat>> fetchCats(int? limit, int? page) async {
     final result = await client.get(baseCatUrl,
         query: '?limit=$limit&page=$page&order=desc');
     if (result.statusCode == 200) {
@@ -32,7 +32,7 @@ class PetDatasourceImpl implements IPetDatasource {
   }
 
   @override
-  Future<List<Dog>> fetchDogs({required int limit, required int page}) async {
+  Future<List<Dog>> fetchDogs(int? limit, int? page) async {
     final result = await client.get(baseDogUrl,
         query: '?limit=$limit&page=$page&order=desc');
     if (result.statusCode == 200) {

@@ -3,18 +3,18 @@ import 'package:wa_pet_app/app/modules/home/utils/pet_sizes.dart';
 
 class Dog extends IPet {
   final int id;
-  final PetHeight height;
+  final PetHeight? height;
 
   Dog(
       {required this.id,
       String? name,
-      required String breedName,
+      String? breedName,
       String? image,
-      required String temperament,
-      required String origin,
-      required String lifeSpan,
-      required PetWeight weight,
-      required this.height})
+      String? temperament,
+      String? origin,
+      String? lifeSpan,
+      PetWeight? weight,
+      this.height})
       : super(
             name: name,
             breedName: breedName,

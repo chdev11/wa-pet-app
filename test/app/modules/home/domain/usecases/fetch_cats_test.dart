@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:wa_pet_app/app/modules/home/domain/entities/cat.dart';
-import 'package:wa_pet_app/app/modules/home/domain/entities/pet.dart';
 import 'package:wa_pet_app/app/modules/home/domain/errors/pet_errors.dart';
 import 'package:wa_pet_app/app/modules/home/domain/repositories/pet_repository.dart';
 import 'package:wa_pet_app/app/modules/home/domain/usecases/fetch_cats.dart';
@@ -14,30 +13,36 @@ void main() {
   late IPetRepository repository;
   late IFetchPets usecase;
 
+  late int limit;
+  late int page;
+
   setUp(() {
     repository = PetRepositoryMock();
     usecase = FetchCats(repository);
+
+    limit = 30;
+    page = 0;
   });
 
-  test('should return a list of pet', () async {
-    when(() => repository.fetchCats(limit: 30, page: 0))
+  test('should return a list of cat', () async {
+    when(() => repository.fetchCats(limit, page))
         .thenAnswer((_) async => const Right(<Cat>[]));
 
-    final future = usecase();
+    final future = usecase(limit: limit, page: page);
 
     expect(future, completes);
 
     final result = await future;
 
     expect(result.isRight(), true);
-    expect(result.fold(id, id), isA<List<IPet>>());
+    expect(result.fold(id, id), isA<List<Cat>>());
   });
 
   test('should return a pet datasource exception', () async {
-    when(() => repository.fetchCats(limit: 30, page: 0))
+    when(() => repository.fetchCats(limit, page))
         .thenAnswer((_) async => Left(PetDatasourceException('')));
 
-    final future = usecase();
+    final future = usecase(limit: limit, page: page);
 
     expect(future, completes);
 

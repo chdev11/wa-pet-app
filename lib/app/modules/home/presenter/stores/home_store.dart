@@ -16,8 +16,8 @@ abstract class HomeStoreBase with Store {
 
   HomeStoreBase(this._fetchCats, this._fetchDogs) {
     () async {
-      var fetchCatsResul = await _fetchCats(30, 0);
-      var fetchDogsResul = await _fetchDogs(30, 0);
+      var fetchCatsResul = await _fetchCats(limit: 30, page: 0);
+      var fetchDogsResul = await _fetchDogs(limit: 30, page: 0);
       fetchCatsResul.fold((l) => print(l.message), (r) => pets.addAll(r));
       fetchDogsResul.fold((l) => print(l.message), (r) => pets.addAll(r));
     }();

@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
                                         height: 100,
                                       )
                                     : Container(),
-                                Text(element.breedName)
+                                Text(element.breedName ?? 'Desconhecido')
                               ],
                             ))
                         .toList()))

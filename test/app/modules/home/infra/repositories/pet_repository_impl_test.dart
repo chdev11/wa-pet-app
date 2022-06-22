@@ -14,16 +14,22 @@ void main() {
   late IPetDatasource datasource;
   late IPetRepository repository;
 
+  late int limit;
+  late int page;
+
   setUp(() {
     datasource = PetDatasourceMock();
     repository = PetRepositoryImpl(datasource);
+
+    limit = 30;
+    page = 0;
   });
 
   test('should return a list of pet model', () async {
-    when(() => datasource.fetchCats(limit: 30, page: 0))
+    when(() => datasource.fetchCats(limit, page))
         .thenAnswer((_) async => <CatModel>[]);
 
-    final future = repository.fetchCats(limit: 30, page: 0);
+    final future = repository.fetchCats(limit, page);
 
     expect(future, completes);
 
@@ -34,10 +40,10 @@ void main() {
   });
 
   test('should return a pet exception', () async {
-    when(() => datasource.fetchCats(limit: 30, page: 0))
+    when(() => datasource.fetchCats(limit, page))
         .thenThrow(PetUnauthorizedException(''));
 
-    final future = repository.fetchCats(limit: 30, page: 0);
+    final future = repository.fetchCats(limit, page);
 
     expect(future, completes);
 

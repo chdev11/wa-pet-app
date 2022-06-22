@@ -4,5 +4,5 @@ import 'package:wa_pet_app/app/modules/home/domain/errors/pet_errors.dart';
 
 abstract class IFetchPets {
   Future<Either<IPetException, List<IPet>>> call(
-      [int limit = 15, int page = 0]);
+      {required int limit, required int page});
 }

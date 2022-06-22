@@ -11,7 +11,7 @@ class FetchDogs implements IFetchPets {
 
   @override
   Future<Either<IPetException, List<IPet>>> call(
-      [int limit = 15, int page = 0]) {
-    return repository.fetchDogs(limit: limit, page: page);
+      {required int limit, required int page}) {
+    return repository.fetchDogs(limit, page);
   }
 }

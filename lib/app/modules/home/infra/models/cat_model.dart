@@ -1,14 +1,14 @@
 import 'dart:convert';
 
-import 'package:wa_pet_app/app/modules/home/domain/entities/Cat.dart';
-import 'package:wa_pet_app/app/modules/home/domain/utils/pet_sizes.dart';
+import 'package:wa_pet_app/app/modules/home/domain/entities/cat.dart';
+import 'package:wa_pet_app/app/modules/home/utils/pet_sizes.dart';
 
 class CatModel extends Cat {
   CatModel(
       {required String id,
       String? name,
       required String breedName,
-      required String image,
+      String? image,
       required String temperament,
       required String origin,
       required String lifeSpan,
@@ -39,7 +39,7 @@ class CatModel extends Cat {
     return CatModel(
         id: source['id'],
         breedName: source['name'],
-        image: source['image']['url'],
+        image: source['image'] != null ? source['image']['url'] : null,
         temperament: source['temperament'],
         origin: source['origin'],
         lifeSpan: source['life_span'],

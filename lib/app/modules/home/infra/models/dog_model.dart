@@ -1,14 +1,14 @@
 import 'dart:convert';
 
 import 'package:wa_pet_app/app/modules/home/domain/entities/dog.dart';
-import 'package:wa_pet_app/app/modules/home/domain/utils/pet_sizes.dart';
+import 'package:wa_pet_app/app/modules/home/utils/pet_sizes.dart';
 
 class DogModel extends Dog {
   DogModel(
-      {required String id,
+      {required int id,
       String? name,
       required String breedName,
-      required String image,
+      String? image,
       required String temperament,
       required String origin,
       required String lifeSpan,
@@ -42,7 +42,7 @@ class DogModel extends Dog {
     return DogModel(
         id: source['id'],
         breedName: source['name'],
-        image: source['image']['url'],
+        image: source['image'] != null ? source['image']['url'] : null,
         temperament: source['temperament'],
         origin: source['origin'],
         lifeSpan: source['life_span'],

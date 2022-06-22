@@ -17,7 +17,7 @@ void main() {
     usecase = FetchPets(repository);
   });
 
-  test('should return a list of pets', () async {
+  test('should return a list of pet', () async {
     when(() => repository.fetchPets())
         .thenAnswer((_) async => const Right(<IPet>[]));
 

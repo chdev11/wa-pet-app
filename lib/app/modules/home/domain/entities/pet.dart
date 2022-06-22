@@ -1,3 +1,5 @@
+import 'package:wa_pet_app/app/modules/home/domain/utils/pet_sizes.dart';
+
 abstract class IPet {
   final String id;
   final String? name;
@@ -6,7 +8,7 @@ abstract class IPet {
   final String temperament;
   final String origin;
   final String lifeSpan;
-  final int weight;
+  final PetWeight weight;
 
   IPet(
       {required this.id,

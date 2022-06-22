@@ -20,7 +20,7 @@ void main() {
   });
 
   test('should return a list of pet', () async {
-    when(() => repository.fetchCats())
+    when(() => repository.fetchCats(limit: 30, page: 0))
         .thenAnswer((_) async => const Right(<Cat>[]));
 
     final future = usecase();
@@ -34,7 +34,7 @@ void main() {
   });
 
   test('should return a pet datasource exception', () async {
-    when(() => repository.fetchCats())
+    when(() => repository.fetchCats(limit: 30, page: 0))
         .thenAnswer((_) async => Left(PetDatasourceException('')));
 
     final future = usecase();

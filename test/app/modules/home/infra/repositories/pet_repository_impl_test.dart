@@ -20,9 +20,10 @@ void main() {
   });
 
   test('should return a list of pet model', () async {
-    when(() => datasource.fetchCats()).thenAnswer((_) async => <CatModel>[]);
+    when(() => datasource.fetchCats(limit: 30, page: 0))
+        .thenAnswer((_) async => <CatModel>[]);
 
-    final future = repository.fetchCats();
+    final future = repository.fetchCats(limit: 30, page: 0);
 
     expect(future, completes);
 
@@ -33,9 +34,10 @@ void main() {
   });
 
   test('should return a pet exception', () async {
-    when(() => datasource.fetchCats()).thenThrow(PetUnauthorizedException(''));
+    when(() => datasource.fetchCats(limit: 30, page: 0))
+        .thenThrow(PetUnauthorizedException(''));
 
-    final future = repository.fetchCats();
+    final future = repository.fetchCats(limit: 30, page: 0);
 
     expect(future, completes);
 

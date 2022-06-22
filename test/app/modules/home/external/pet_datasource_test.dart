@@ -29,7 +29,7 @@ void main() {
           data: cat200,
         ));
 
-    final future = datasource.fetchCats();
+    final future = datasource.fetchCats(limit: 30, page: 0);
 
     expect(future, completes);
 
@@ -45,7 +45,7 @@ void main() {
           data: dog200,
         ));
 
-    final future = datasource.fetchDogs();
+    final future = datasource.fetchDogs(limit: 30, page: 0);
 
     expect(future, completes);
 

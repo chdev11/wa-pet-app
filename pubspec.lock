@@ -236,7 +236,7 @@ packages:
       name: flutter_modular
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.5.1+1"
+    version: "5.0.3"
   flutter_modular_annotations:
     dependency: transitive
     description:
@@ -374,7 +374,7 @@ packages:
       name: modular_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "2.0.3+1"
   modular_interfaces:
     dependency: transitive
     description:
@@ -548,13 +548,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
-  triple:
-    dependency: transitive
-    description:
-      name: triple
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.5.0+1"
   typed_data:
     dependency: transitive
     description:

@@ -21,7 +21,26 @@ class _HomePageState extends State<HomePage> {
         title: const Text('Counter'),
       ),
       body: Observer(
-        builder: (context) => const Text('Hello world'),
+        builder: (context) => Column(
+          children: [
+            Expanded(
+                child: ListView(
+                    children: store.pets
+                        .map((element) => Row(
+                              children: [
+                                element.image != null
+                                    ? Image(
+                                        image: NetworkImage(element.image!),
+                                        width: 100,
+                                        height: 100,
+                                      )
+                                    : Container(),
+                                Text(element.breedName)
+                              ],
+                            ))
+                        .toList()))
+          ],
+        ),
       ),
     );
   }

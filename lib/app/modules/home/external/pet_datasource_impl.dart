@@ -13,8 +13,9 @@ class PetDatasourceImpl implements IPetDatasource {
   PetDatasourceImpl(this.client);
 
   @override
-  Future<List<Cat>> fetchCats() async {
-    final result = await client.get(baseCatUrl);
+  Future<List<Cat>> fetchCats({required int limit, required int page}) async {
+    final result = await client.get(baseCatUrl,
+        query: '?limit=$limit&page=$page&order=desc');
     if (result.statusCode == 200) {
       try {
         return (result.data as List).map((e) => CatModel.fromMap(e)).toList();
@@ -31,8 +32,9 @@ class PetDatasourceImpl implements IPetDatasource {
   }
 
   @override
-  Future<List<Dog>> fetchDogs() async {
-    final result = await client.get(baseDogUrl);
+  Future<List<Dog>> fetchDogs({required int limit, required int page}) async {
+    final result = await client.get(baseDogUrl,
+        query: '?limit=$limit&page=$page&order=desc');
     if (result.statusCode == 200) {
       try {
         return (result.data as List).map((e) => DogModel.fromMap(e)).toList();

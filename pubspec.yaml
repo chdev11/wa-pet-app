@@ -95,3 +95,6 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+scripts:
+  runner: flutter pub run build_runner watch --delete-conflicting-outputs
+  pub: flutter pub get

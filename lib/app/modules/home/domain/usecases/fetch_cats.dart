@@ -10,7 +10,8 @@ class FetchCats implements IFetchPets {
   FetchCats(this.repository);
 
   @override
-  Future<Either<IPetException, List<IPet>>> call() {
-    return repository.fetchCats();
+  Future<Either<IPetException, List<IPet>>> call(
+      [int limit = 15, int page = 0]) {
+    return repository.fetchCats(limit: limit, page: page);
   }
 }

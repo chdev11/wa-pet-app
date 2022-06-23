@@ -1,4 +1,5 @@
 import 'package:wa_pet_app/app/modules/home/domain/entities/pet.dart';
+import 'package:wa_pet_app/app/modules/home/utils/pet_enums.dart';
 import 'package:wa_pet_app/app/modules/home/utils/pet_sizes.dart';
 
 class Dog extends IPet {
@@ -16,6 +17,7 @@ class Dog extends IPet {
       PetWeight? weight,
       this.height})
       : super(
+            selectionEnum: PetSelectionEnum.dog,
             name: name,
             breedName: breedName,
             image: image,

@@ -1,6 +1,8 @@
+import 'package:wa_pet_app/app/modules/home/utils/pet_enums.dart';
 import 'package:wa_pet_app/app/modules/home/utils/pet_sizes.dart';
 
 abstract class IPet {
+  final PetSelectionEnum selectionEnum;
   final String? name;
   final String? breedName;
   final String? image;
@@ -10,7 +12,8 @@ abstract class IPet {
   final PetWeight? weight;
 
   IPet(
-      {this.name,
+      {required this.selectionEnum,
+      this.name,
       this.breedName,
       this.image,
       this.temperament,

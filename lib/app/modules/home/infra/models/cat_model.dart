@@ -46,9 +46,9 @@ class CatModel extends Cat {
         breedName: source['name'],
         description: source['description'],
         image: source['image'] != null ? source['image']['url'] : null,
-        temperament: source['temperament'],
-        origin: source['origin'],
-        lifeSpan: source['life_span'],
+        temperament: source['temperament'] ?? 'Very fun',
+        origin: source['origin'] ?? 'Unknown',
+        lifeSpan: source['life_span'] ?? 'Many years',
         weight: PetWeight(
             source['weight']['imperial'], source['weight']['metric']));
   }

@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
 
       if (state is PetError) {
         color = Colors.red;
-        message = state.message;
+        message = 'Error loading pets';
       } else if (state is PetSuccess) {
         color = Colors.green;
         message = 'Pets successfully loaded';
@@ -75,8 +75,8 @@ class _HomePageState extends State<HomePage> {
               Observer(builder: (context) {
                 return Row(
                   children: [
-                    const Text('Pet list', style: TextStyle(fontSize: 20)),
-                    Spacer(),
+                    const Text('Pets', style: TextStyle(fontSize: 20)),
+                    const Spacer(),
                     GestureDetector(
                       onTap: () =>
                           store.page <= 0 ? () {} : store.decreasePage(),
@@ -104,6 +104,18 @@ class _HomePageState extends State<HomePage> {
                     children: const [
                       Center(
                         child: CircularProgressIndicator(),
+                      )
+                    ],
+                  ));
+                }
+                if (store.pets.isEmpty) {
+                  return Expanded(
+                      child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Center(
+                        child: Text('No pets available :(',
+                            style: TextStyle(fontSize: 20)),
                       )
                     ],
                   ));

@@ -43,20 +43,20 @@ void main() {
     expect(result, isA<List<Cat>>());
   });
 
-  // test('should return a list of dog', () async {
-  //   when(() => client.get(any(), query: '?limit=$limit&page=$page&order=desc'))
-  //       .thenAnswer((_) async => Response(
-  //             statusCode: 200,
-  //             requestOptions: RequestOptions(path: ''),
-  //             data: dog200,
-  //           ));
+  test('should return a list of dog', () async {
+    when(() => client.get(any(), query: '?limit=$limit&page=$page&order=desc'))
+        .thenAnswer((_) async => Response(
+              statusCode: 200,
+              requestOptions: RequestOptions(path: ''),
+              data: dog200,
+            ));
 
-  //   final future = datasource.fetchDogs(limit, page);
+    final future = datasource.fetchDogs(limit, page);
 
-  //   expect(future, completes);
+    expect(future, completes);
 
-  //   final result = await future;
+    final result = await future;
 
-  //   expect(result, isA<List<Dog>>());
-  // });
+    expect(result, isA<List<Dog>>());
+  });
 }

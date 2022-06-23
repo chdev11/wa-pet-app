@@ -1,6 +1,21 @@
 # wa_pet_app
 
-A new Flutter project.
+WaPet Application
+
+Repository for a development challenge. An application for adopting pets. Concepts and techonlogies:
+
+- Flutter Modular & Slidy
+- Mobx
+- SOLID principles
+- Unit Tests
+- Clean Arch
+
+## Importing project
+
+- Clone repository
+- Change to required branch
+- Run 'flutter pub get' command
+- Create env.dart file in the same directory as the env.example file
 
 ## Getting Started
 
@@ -14,3 +29,4 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+

@@ -5,12 +5,16 @@ class PetCardTitle extends StatelessWidget {
   final IPet pet;
   final String? text;
   final String overrideText;
+  Alignment alignment;
+  TextOverflow overflow;
 
-  const PetCardTitle(
+  PetCardTitle(
       {Key? key,
       required this.pet,
       required this.text,
-      required this.overrideText})
+      required this.overrideText,
+      this.alignment = Alignment.topRight,
+      this.overflow = TextOverflow.ellipsis})
       : super(key: key);
 
   @override
@@ -18,12 +22,10 @@ class PetCardTitle extends StatelessWidget {
     return SizedBox(
       width: MediaQuery.of(context).size.width / 1.8,
       child: Align(
-        alignment: Alignment.topRight,
+        alignment: alignment,
         child: Text(text ?? overrideText,
-            style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                overflow: TextOverflow.ellipsis,
-                fontSize: 18)),
+            style: TextStyle(
+                fontWeight: FontWeight.bold, overflow: overflow, fontSize: 18)),
       ),
     );
   }

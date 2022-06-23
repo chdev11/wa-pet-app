@@ -115,7 +115,13 @@ class _HomePageState extends State<HomePage> {
                                     element.selectionEnum ==
                                     store.selectionEnum)
                                 : store.pets)
-                            .map((element) => PetCard(pet: element))
+                            .map((element) => PetCard(
+                                  pet: element,
+                                  onTap: () {
+                                    Modular.to.pushNamed('/home/information',
+                                        arguments: element);
+                                  },
+                                ))
                             .toList()));
               })
             ],

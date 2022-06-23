@@ -1,10 +1,12 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:wa_pet_app/app/modules/home/domain/entities/pet.dart';
 import 'package:wa_pet_app/app/modules/home/domain/repositories/pet_repository.dart';
 import 'package:wa_pet_app/app/modules/home/domain/usecases/fetch_cats.dart';
 import 'package:wa_pet_app/app/modules/home/domain/usecases/fetch_dogs.dart';
 import 'package:wa_pet_app/app/modules/home/external/pet_datasource_impl.dart';
 import 'package:wa_pet_app/app/modules/home/infra/datasources/pet_datasource.dart';
 import 'package:wa_pet_app/app/modules/home/infra/repositories/pet_repository_impl.dart';
+import 'package:wa_pet_app/app/modules/home/ui/pages/pet_page.dart';
 import 'package:wa_pet_app/env.dart';
 import 'package:wa_pet_app/shared/auth/domain/usecases/logout_usecase.dart';
 import 'package:wa_pet_app/shared/clients/implementations/dio_client.dart';
@@ -31,5 +33,9 @@ class HomeModule extends Module {
   @override
   final List<ModularRoute> routes = [
     ChildRoute(Modular.initialRoute, child: (_, args) => HomePage()),
+    ChildRoute(
+      '/information',
+      child: (context, args) => PetPage(pet: args.data as IPet),
+    )
   ];
 }
